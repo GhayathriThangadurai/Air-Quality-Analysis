@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title> Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{%static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{%static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{%static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{%static 'css/style.css' %}" rel="stylesheet">
+</head>
+<style>
+   .top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+</style>
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+            
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+            <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+                <h1  style="color: black;"><span style="color: darkgoldenrod;" >AIR </span>POLLUTIONS</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {% if user.is_authenticated %}
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                  <li class="nav-item"><a href="{% url 'Basic_report' %}" class="nav-link" style="color: darkgoldenrod;">Basic Report</a></li>
+                  <li class="nav-item"><a href="{% url 'Metrics_report' %}" class="nav-link" style="color: darkgoldenrod;">Metrics Report</a></li>
+                  <li class="nav-item"><a href="{% url 'Deploy_8' %}" class="nav-link" style="color: darkgoldenrod;"> Model</a></li>
+                  <li class="nav-item"><a href="{% url 'Air_db' %}" class="nav-link" style="color: darkgoldenrod;">Air_DB</a></li>
+                  <li class="nav-item"><a href="{% url 'users-profile' %}" class="nav-link" style="color: darkgoldenrod;">Profile</a></li>
+                  <li class="nav-item"><a href="{% url 'logout_view' %}" class="nav-link" style="color: darkgoldenrod;">Logout</a></li>
+                    
+
+                </div>
+              {% else %}
+              <a class="btn btn-primary rounded-pill top-right" href="{% url 'login' %}">Sign In</a>
+
+              {% endif %}
+  
+               
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Carousel Start -->
+
+    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg?cs=srgb&dl=pexels-pixabay-459728.jpg&fm=jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-7">
+                                    <centre><h1 style="color: white; font-size: 80px;">Air Quality predections</h1></centre><br><br>
+
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="https://thehill.com/wp-content/uploads/sites/2/2022/09/airpollution_istock_0914-1.jpeg?strip=1" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-7">
+                                    <h1 class="display-2 mb-5 animated slideInDown"></h1>
+                                    <centre><h1 style="color: white; font-size: 80px;">Air Quality predections</h1></centre><br><br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
+    {% if user.is_authenticated %}
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                        <img class="img-fluid w-100" src="https://previews.123rf.com/images/vpif/vpif1910/vpif191000003/136738702-air-pollution-factory-pipes-emits-smoke-smoke-from-the-chimneys-of-the-plant-on-the-background-of.jpg">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-5 mb-4">Air Quality Types</h1>
+                    <p class="mb-4">Air Quality Index is a tool for effective communication of air quality status to people in terms, which are easy to understand. ...
+                     </p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Good</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Satisfactory</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Moderately polluted</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Poor</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Very Poor</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Severe</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid bg-light bg-icon py-6 mb-5">
+        <div class="container">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-5 mb-3">Algorithm </h1>
+                <p>An algorithm is a set of commands that must be followed for a computer to perform calculations or other problem-solving operations.According to its formal definition, an algorithm is a finite set of instructions carried out in a specific order to perform a particular task.</p>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                    <p class="mb-4">Data cleaning is the initial phase of refining your dataset, making it readable and usable with techniques like removing duplicates, handling missing values and data type conversion while data preprocessing is similar to taking this refined data and scaling with more advanced techniques such as feature engineering</p>
+                    <div class="d-flex align-items-center">
+                        <img class="flex-shrink-0 rounded-circle" src="data:image/png;base64,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" alt="">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Moudle - 1</h5>
+                            <span>Data preprocessing </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                    <p class="mb-4">The process of finding trends and correlations in our data by representing it pictorially is called Data Visualization. To perform data visualization in python, we can use various python data visualization modules such as Matplotlib, Seaborn, Plotly, etc.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="flex-shrink-0 rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE4N4xXCa1KnxLvzr4Z-b8hjroSf2z5q5O1g&s" alt="">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Moudle - 2</h5>
+                            <span>Data visuvalations </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                    <p class="mb-4">Robust to noise and irrelevant features: Extra Trees Classifier utilizes multiple decision trees and selects features based on their importance scores, making it less sensitive to noise and irrelevant features. It can effectively handle datasets with a large number of features and noisy data.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="flex-shrink-0 rounded-circle" src="data:image/jpeg;base64,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" alt="">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Moudle - 3</h5>
+                            <span>ExtraTreeClassifier Algorithm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                    <p class="mb-4">Bernoulli Naive Bayes is a part of the Naive Bayes family. It is based on the Bernoulli Distribution and accepts only binary values, i.e., 0 or 1. If the features of the dataset are binary, then we can assume that Bernoulli Naive Bayes is the algorithm to be used</p>
+                    <div class="d-flex align-items-center">
+                        <img class="flex-shrink-0 rounded-circle" src="data:image/jpeg;base64,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" alt="">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Moudle - 4</h5>
+                            <span>BernoulliNB Algorithm</span>
+                        </div>
+                    </div>
+                </div>
+               
+              <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                <p class="mb-4">XGBoost is a boosting algorithm that uses bagging, which trains multiple decision trees and then combines the results. It allows XGBoost to learn more quickly than other algorithms but also gives it an advantage in situations with many features to consider.</p>
+                <div class="d-flex align-items-center">
+                    <img class="flex-shrink-0 rounded-circle" src="data:image/jpeg;base64,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" alt="">
+                    <div class="ms-3">
+                        <h5 class="mb-1">Moudle - 5</h5>
+                        <span>XGBoost Algorithm</span>
+                    </div>
+                </div>
+                
+                
+              </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+   
+    <!-- Footer End -->
+
+  {% endif %}
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{%static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{%static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{%static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{%static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{%static 'js/main.js' %}"></script>
+</body>
+
+</html>

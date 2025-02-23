@@ -1,0 +1,106 @@
+{% extends "users/base.html" %}
+{% block title %} Login Page {% endblock title%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Data Input Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Optional custom styles */
+        body {
+            padding: 20px;
+            background-image: url(https://d2jx2rerrg6sh3.cloudfront.net/images/news/ImageForNews_737445_16751872280178848.jpg);
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif; /* Optional: Change font family */
+            color: #ffeaea; /* Optional: Change text color */
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="mb-4">Environmental Data Input Form</h2>
+    <form action="{% url 'Deploy_8' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="pm25">PM2.5 (Particulate Matter &lt; 2.5 micrometers)</label>
+                    <input type="text" class="form-control" id="pm25" name="pm25" placeholder="Enter PM2.5 value">
+                </div>
+                <div class="form-group">
+                    <label for="pm10">PM10 (Particulate Matter &lt; 10 micrometers)</label>
+                    <input type="text" class="form-control" id="pm10" name="pm10" placeholder="Enter PM10 value">
+                </div>
+                <div class="form-group">
+                    <label for="no">NO (Nitric Oxide)</label>
+                    <input type="text" class="form-control" id="no" name="no" placeholder="Enter NO value">
+                </div>
+                <div class="form-group">
+                    <label for="no2">NO2 (Nitrogen Dioxide)</label>
+                    <input type="text" class="form-control" id="no2" name="no2" placeholder="Enter NO2 value">
+                </div>
+                <div class="form-group">
+                    <label for="nox">NOx (Nitrogen Oxides)</label>
+                    <input type="text" class="form-control" id="nox" name="nox" placeholder="Enter NOx value">
+                </div>
+                <div class="form-group">
+                    <label for="nh3">NH3 (Ammonia)</label>
+                    <input type="text" class="form-control" id="nh3" name="nh3" placeholder="Enter NH3 value">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="co">CO (Carbon Monoxide)</label>
+                    <input type="text" class="form-control" id="co" name="co" placeholder="Enter CO value">
+                </div>
+                <div class="form-group">
+                    <label for="so2">SO2 (Sulfur Dioxide)</label>
+                    <input type="text" class="form-control" id="so2" name="so2" placeholder="Enter SO2 value">
+                </div>
+                <div class="form-group">
+                    <label for="o3">O3 (Ozone)</label>
+                    <input type="text" class="form-control" id="o3" name="o3" placeholder="Enter O3 value">
+                </div>
+                <div class="form-group">
+                    <label for="benzene">Benzene</label>
+                    <input type="text" class="form-control" id="benzene" name="benzene" placeholder="Enter Benzene value">
+                </div>
+                <div class="form-group">
+                    <label for="toluene">Toluene</label>
+                    <input type="text" class="form-control" id="toluene" name="toluene" placeholder="Enter Toluene value">
+                </div>
+                <div class="form-group">
+                    <label for="xylene">Xylene</label>
+                    <input type="text" class="form-control" id="xylene" name="xylene" placeholder="Enter Xylene value">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="aqi">AQI (Air Quality Index)</label>
+            <input type="text" class="form-control" id="aqi" name="aqi" placeholder="Enter AQI value">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+{% endblock content %}

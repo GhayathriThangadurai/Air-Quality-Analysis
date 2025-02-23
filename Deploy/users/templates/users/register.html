@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-image: url("https://cdn.vectorstock.com/i/500p/32/62/city-air-pollution-chimneys-of-power-energy-vector-42923262.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            font-family: 'Aoboshi One', serif;
+            font-size: 25px;
+            font-style: italic;
+            text-align: center;
+            cursor: pointer;
+            color: darkgoldenrod;
+        }
+        #login_form {
+            width: 408px;
+            height: auto;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            text-align: center;
+            margin: auto;
+            margin-top: 65px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            padding: 20px;
+        }
+        #login_form:hover {
+            box-shadow: 6px 10px 10px 10px rgba(255, 255, 255, 0.781);
+        }
+        input, button {
+            padding: 15px;
+            border-radius: 25px;
+            background: inherit;
+            border: none;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 15px;
+            width: calc(100% - 30px);
+            max-width: 100%;
+            box-shadow: 10px 10px 40px 20px rgba(0, 0, 0, 0.377);
+            transition: 0.2s;
+            display: block;
+            margin: auto;
+        }
+        input:hover {
+            box-shadow: 10px 10px 40px 20px rgba(0, 0, 0, 0.616);
+        }
+        ::placeholder {
+            color: #ffffffa8;
+            transition: 0.2s;
+        }
+        button {
+            background-color: #fff;
+            border-radius: 25px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 20px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color:  darkgoldenrod;
+            font-size: 24px;
+            transform: scale(1, 1);
+            box-shadow: 6px 6px 6px 6px rgba(255, 255, 255, 0.747);
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-group label {
+            width: 30%;
+            text-align: right;
+            margin-right: 20px;
+        }
+        .form-group input {
+            width: 60%;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Create Account</h2>
+    <div id="login_form">
+        <form method="POST">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div id="form_errors">
+                        {% for key, value in form.errors.items %}
+                            <strong>{{ value }}</strong>
+                        {% endfor %}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            <div class="form-group">
+                <label class="small mb-1" for="id_first_name">First Name</label>
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                <label class="small mb-1" for="id_last_name">Last Name</label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                <label class="small mb-1" for="id_username">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label class="small mb-1" for="id_email">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label class="small mb-1" for="id_password1">Password</label>
+                {{ form.password1 }}
+                {{ form.errors.password }}
+            </div>
+            <div class="form-group">
+                <label class="small mb-1" for="id_password2">Confirm Password</label>
+                {{ form.password2 }}
+            </div>
+            <div class="form-group">
+                <button type="submit" style="color: black;">Sign Up</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <p><a href="{% url 'login' %}" style="color: #de1160;">Already have an account? Go to Sign in</a></p>
+        </div>
+    </div>
+</body>
+</html>

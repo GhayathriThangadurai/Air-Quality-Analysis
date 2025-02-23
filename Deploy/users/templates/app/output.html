@@ -1,0 +1,338 @@
+{% extends "users/base.html" %}
+{% block title %} Air Quality Index (AQI) Conditions {% endblock title %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Index (AQI) Conditions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        background: url(https://d2jx2rerrg6sh3.cloudfront.net/images/news/ImageForNews_737445_16751872280178848.jpg);
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .card {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 18px;
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .section {
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: #007bff;
+    }
+
+    .section-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .section-text ul {
+        list-style-type: disc;
+        margin: 10px 0 10px 20px;
+    }
+
+    .section-text ul li {
+        margin-bottom: 5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <button>
+            <a href="{% url 'users-home' %}" class="btn btn-primary btn-lg mb-3">Home</a>
+        </button>
+        <h1>Air Quality Index (AQI) Conditions</h1>
+
+        <!-- Good -->
+        {% if predict == 'Good' %}
+        <div class="card">
+            <div class="card-header">
+                Good (0-50)
+            </div>
+            <div class="card-body">
+                <div class="section">
+                    <h5 class="section-title">Description:</h5>
+                    <p class="section-text">Air quality is considered satisfactory, and air pollution poses little or no risk.</p>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Symptoms:</h5>
+                    <ul class="section-text">
+                        <li>No adverse health effects expected for the general population.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Causes:</h5>
+                    <ul class="section-text">
+                        <li>Low levels of air pollutants due to favorable weather conditions and low emissions.</li>
+                        <li>Effective air quality management policies and practices.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Prevention:</h5>
+                    <ul class="section-text">
+                        <li>No specific actions needed.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Potential Diseases:</h5>
+                    <ul class="section-text">
+                        <li>No significant risk of diseases due to air pollution at this level.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Moderate -->
+        {% if predict == 'Moderate' %}
+        <div class="card">
+            <div class="card-header">
+                Moderate (51-100)
+            </div>
+            <div class="card-body">
+                <div class="section">
+                    <h5 class="section-title">Description:</h5>
+                    <p class="section-text">Air quality is acceptable; however, some pollutants may pose a moderate health concern for a small number of people who are sensitive to air pollution.</p>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Symptoms:</h5>
+                    <ul class="section-text">
+                        <li>People with respiratory or heart conditions may experience mild symptoms.</li>
+                        <li>Sensitive individuals may experience mild irritation of eyes, nose, and throat.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Causes:</h5>
+                    <ul class="section-text">
+                        <li>Moderate levels of pollutants from vehicle emissions, industrial activities, or natural sources.</li>
+                        <li>Increased use of fossil fuels and industrial emissions.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Prevention:</h5>
+                    <ul class="section-text">
+                        <li>Sensitive individuals should limit prolonged outdoor exertion.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Potential Diseases:</h5>
+                    <ul class="section-text">
+                        <li>Possible aggravation of respiratory conditions such as asthma.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Satisfactory -->
+        {% if predict == 'Satisfactory' %}
+        <div class="card">
+            <div class="card-header">
+                Satisfactory (101-150)
+            </div>
+            <div class="card-body">
+                <div class="section">
+                    <h5 class="section-title">Description:</h5>
+                    <p class="section-text">Air quality is satisfactory, but there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</p>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Symptoms:</h5>
+                    <ul class="section-text">
+                        <li>Sensitive individuals may experience respiratory symptoms.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Causes:</h5>
+                    <ul class="section-text">
+                        <li>Pollutants from vehicle emissions, industrial activities, and natural sources.</li>
+                        <li>Adverse weather conditions.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Prevention:</h5>
+                    <ul class="section-text">
+                        <li>Sensitive individuals should limit outdoor activities.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Potential Diseases:</h5>
+                    <ul class="section-text">
+                        <li>Minor risk of aggravating existing respiratory conditions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Poor -->
+        {% if predict == 'Poor' %}
+        <div class="card">
+            <div class="card-header">
+                Poor (151-200)
+            </div>
+            <div class="card-body">
+                <div class="section">
+                    <h5 class="section-title">Description:</h5>
+                    <p class="section-text">Air quality is unhealthy for sensitive groups. The general public is not likely to be affected.</p>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Symptoms:</h5>
+                    <ul class="section-text">
+                        <li>Sensitive individuals may experience more serious health effects.</li>
+                        <li>Children, elderly, and individuals with pre-existing health conditions may experience aggravated symptoms.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Causes:</h5>
+                    <ul class="section-text">
+                        <li>Higher levels of pollutants from traffic, industrial emissions, and other sources.</li>
+                        <li>Adverse weather conditions trapping pollutants close to the ground.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Prevention:</h5>
+                    <ul class="section-text">
+                        <li>Sensitive groups should reduce prolonged or heavy exertion outdoors.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Potential Diseases:</h5>
+                    <ul class="section-text">
+                        <li>Risk of exacerbation of respiratory and cardiovascular conditions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Very Poor -->
+        {% if predict == 'Very Poor' %}
+        <div class="card">
+            <div class="card-header">
+                Very Poor (201-300)
+            </div>
+            <div class="card-body">
+                <div class="section">
+                    <h5 class="section-title">Description:</h5>
+                    <p class="section-text">Health alert: everyone may experience more serious health effects.</p>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Symptoms:</h5>
+                    <ul class="section-text">
+                        <li>Increased likelihood of adverse health effects for everyone.</li>
+                        <li>Sensitive groups may experience severe symptoms such as asthma attacks and cardiovascular issues.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Causes:</h5>
+                    <ul class="section-text">
+                        <li>Very high levels of pollutants from sources like heavy traffic, industrial activities, and natural events.</li>
+                        <li>Stagnant air conditions exacerbating pollution levels.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Prevention:</h5>
+                    <ul class="section-text">
+                        <li>Everyone should avoid all outdoor exertion. Sensitive groups should remain indoors and keep activity levels low.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Potential Diseases:</h5>
+                    <ul class="section-text">
+                        <li>High risk of severe respiratory and cardiovascular diseases.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Severe -->
+        {% if predict == 'Severe' %}
+        <div class="card">
+            <div class="card-header">
+                Severe (301-500)
+            </div>
+            <div class="card-body">
+                <div class="section">
+                    <h5 class="section-title">Description:</h5>
+                    <p class="section-text">Health warnings of emergency conditions: the entire population is more likely to be affected.</p>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Symptoms:</h5>
+                    <ul class="section-text">
+                        <li>Serious risk of respiratory and cardiovascular effects for the entire population.</li>
+                        <li>Severe health effects for sensitive groups, including respiratory and heart conditions.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Causes:</h5>
+                    <ul class="section-text">
+                        <li>Extremely high levels of pollutants from sources such as wildfires, industrial accidents, and severe traffic congestion.</li>
+                        <li>Extremely adverse weather conditions trapping pollutants.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Prevention:</h5>
+                    <ul class="section-text">
+                        <li>Everyone should avoid all outdoor activity. Sensitive groups should remain indoors with windows and doors closed.</li>
+                        <li>Use air purifiers to reduce indoor pollution levels.</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h5 class="section-title">Potential Diseases:</h5>
+                    <ul class="section-text">
+                        <li>High risk of severe respiratory and cardiovascular diseases.</li>
+                        <li>Increased incidence of respiratory infections and exacerbation of chronic diseases.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
+
+{% endblock content %}
